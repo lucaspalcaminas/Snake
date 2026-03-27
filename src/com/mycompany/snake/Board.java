@@ -7,6 +7,8 @@ package com.mycompany.snake;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
@@ -55,19 +57,43 @@ public class Board extends JPanel implements DrawSquareInterface {
         }
     }*/
     
+    private Timer timer;
+    private Snake snake;
+    public static final int DELTA_TIME = 200;
     public static final int NUM_COLSROWS = 20;
     private int currentRow;
     private int currentCol;
     //private MyKeyAdapter keyAdapter;
-    private Snake snake;
+    
     private DrawSquareInterface drawSquareInterface;
-    private Timer timer;
+    
     
     public Board() {
+        initComponents();
         snake = new Snake(this);
+        timer = new Timer(DELTA_TIME, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae){
+        tick();
+            }
+        
+        });
+        
+    }
+    public void tick(){
+        if(snake.canMove()){
+            snake.move();
+        } else{
+            //game over
+        }repaint();
     }
     
-    
+    private void paintBorderBoard(Graphics g){
+        g.setColor(Color.black);
+        int width = squareWidth() * NUM_COLSROWS;
+        int height = squareHeight() * NUM_COLSROWS;
+        g.drawRect(0,0,width,height);
+    }
     
     
     @Override

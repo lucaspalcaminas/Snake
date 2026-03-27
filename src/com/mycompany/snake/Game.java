@@ -28,22 +28,39 @@ public class Game extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        board1 = new com.mycompany.snake.Board();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout board1Layout = new javax.swing.GroupLayout(board1);
+        board1.setLayout(board1Layout);
+        board1Layout.setHorizontalGroup(
+            board1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 306, Short.MAX_VALUE)
+        );
+        board1Layout.setVerticalGroup(
+            board1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 229, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(board1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(board1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void initComponents() {
+    /*private void initComponents() {
         
 
         board2 = new com.mycompany.snake.Board();
@@ -65,7 +82,7 @@ public class Game extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    */
     /**
      * @param args the command line arguments
      */
@@ -91,6 +108,7 @@ public class Game extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Game().setVisible(true));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.mycompany.snake.Board board1;
     // End of variables declaration//GEN-END:variables
     private com.mycompany.snake.Board board2;
 }

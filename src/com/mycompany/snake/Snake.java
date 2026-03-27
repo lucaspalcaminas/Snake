@@ -68,23 +68,30 @@ public class Snake {
                 
      
     
-    public boolean move() {
+    public void move() {
+        int row = nodes.getFirst().getRow();
+        int col = nodes.getFirst().getCol();
         Node node = null;
            switch (direction) {
             case UP:
-                
+                node = new Node(row -1, col);
                 break;
             case DOWN:
-                
+                node = new Node(row +1, col);
                 break;
             case LEFT:
-                
+                node = new Node(row, col -1);
                 break;
             case RIGHT:
-                
+                node = new Node(row, col +1);
                 break;
         }
-        return false;
+           if(nodesToGrow == 0){
+               nodes.removeLast();
+           }else{
+               nodesToGrow --;
+           }
+        
     }
     
     public void addNode(Node node) {
