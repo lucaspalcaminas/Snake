@@ -24,9 +24,9 @@ import javax.swing.Timer;
  * @author carpraesc
  */
 public class Board extends JPanel implements DrawSquareInterface {
-    
-    /*class MyKeyAdapter extends KeyAdapter {
-
+    /*
+    class MyKeyAdapter extends KeyAdapter {
+        
         @Override
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
@@ -55,7 +55,42 @@ public class Board extends JPanel implements DrawSquareInterface {
             }
             repaint();
         }
-    }*/
+      }*/
+    class MyKeyAdapter extends KeyAdapter {
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if (snake.getDirection() != Direction.RIGHT) { //currentCol -1 sirve para comprobar si se puede mover hacia la izquierda
+                        snake.changeDirection(Direction.LEFT);
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (snake.getDirection() != Direction.LEFT) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                        snake.changeDirection(Direction.RIGHT);
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                    if (snake.getDirection() != Direction.UP) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                        snake.changeDirection(Direction.UP);
+                    }
+                case KeyEvent.VK_DOWN:
+                    if (snake.getDirection() != Direction.DOWN) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                        snake.changeDirection(Direction.DOWN);
+                    }
+                    break;
+                case KeyEvent.VK_SPACE:
+                    
+                default:
+                    break;
+            }
+        }
+
+        private boolean canMove(int i, int currentCol, int currentShape) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
     
     private Timer timer;
     private Snake snake;
@@ -63,10 +98,12 @@ public class Board extends JPanel implements DrawSquareInterface {
     public static final int NUM_COLSROWS = 20;
     private int currentRow;
     private int currentCol;
+    private Direction direction;
     //private MyKeyAdapter keyAdapter;
     
     private DrawSquareInterface drawSquareInterface;
     
+    private int currentShape;
     
     public Board() {
         initComponents();
@@ -78,8 +115,17 @@ public class Board extends JPanel implements DrawSquareInterface {
             }
         
         });
+        initGame();
         
     }
+    private void initGame(){
+        timer.start();
+    }    
+
+    public void changeDirection(Direction direction){
+        this.direction = direction;
+    }
+    
     public void tick(){
         if(snake.canMove()){
             snake.move();
@@ -96,6 +142,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     }
     
     
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -109,6 +156,9 @@ public class Board extends JPanel implements DrawSquareInterface {
 
     private int squareHeight() {
         return getHeight() / NUM_COLSROWS;
+    }
+    private void rotate(){
+        
     }
 
     

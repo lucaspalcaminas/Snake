@@ -43,25 +43,14 @@ public class Snake {
     public boolean canMove() {
         switch (direction) {
             case UP:
-                if (nodes.getFirst().getRow() - 1 < 0) {
-                    return false;
-                }
-                break;
+                    return nodes.getFirst().getRow() - 1 >= 0;
             case DOWN:
-                if (nodes.getFirst().getRow() + 1 >= Board.NUM_COLSROWS) {
-                    return false;
-                }
-                break;
+                return nodes.getFirst().getRow() + 1 < Board.NUM_COLSROWS;
             case LEFT:
-                if (nodes.getFirst().getCol() - 1 < 0) {
-                    return false;
-                }
-                break;
+                
+                    return nodes.getFirst().getCol() - 1 >= 0;
             case RIGHT:
-                if (nodes.getFirst().getCol() + 1 >= Board.NUM_COLSROWS) {
-                    return false;
-                }
-                break;
+                    return nodes.getFirst().getCol() + 1 < Board.NUM_COLSROWS;
         }
         return true;
     }
@@ -86,11 +75,8 @@ public class Snake {
                 node = new Node(row, col +1);
                 break;
         }
-           if(nodesToGrow == 0){
-               nodes.removeLast();
-           }else{
-               nodesToGrow --;
-           }
+          nodes.addFirst(node);
+          nodes.remove(nodes.getLast());
         
     }
     
@@ -107,6 +93,14 @@ public class Snake {
             }
         }
         
+    }
+
+    void changeDirection(Direction direction) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Direction getDirection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

@@ -13,8 +13,13 @@ public class Food extends Node {
     
     public Food(int row, int col) {
         super(row, col); // Esto hay que preguntar si está bien para heredar, falta el resto
-        
-    }
+        int rows = (int) (Math.random() * Board.NUM_COLSROWS);
+        int cols = (int) (Math.random() * Board.NUM_COLSROWS);
+        setRow(rows);
+        setCol(cols);
+     }
+
+    
     
     
 }
