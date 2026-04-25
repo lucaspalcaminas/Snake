@@ -338,13 +338,13 @@ public class Board extends JPanel implements DrawSquareInterface, InitGame {
     public void setSpeed(int speed) {
     this.delta_time = speed;
     if (timer != null) {
-        timer.setDelay(delta_time); // Actualiza el timer si ya está corriendo
+        timer.setDelay(delta_time); 
         }
     }
     
     public void setSquareSize(int size) {
     this.NUM_COLSROWS = size;
-    // Aquí podrías forzar un repaint o recalcular dimensiones si fuera necesario
+    
     }
     
 

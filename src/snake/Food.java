@@ -23,7 +23,7 @@ public class Food extends Node {
         row = (int) (Math.random() * Board.NUM_COLSROWS);
         col = (int) (Math.random() * Board.NUM_COLSROWS);
         
-        // Actualizamos temporalmente para que contains pueda revisar
+        
         this.setRow(row);
         this.setCol(col);
         
