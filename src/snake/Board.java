@@ -64,31 +64,35 @@ public class Board extends JPanel implements DrawSquareInterface, InitGame {
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    if (snake.getDirection() != Direction.RIGHT) { //currentCol -1 sirve para comprobar si se puede mover hacia la izquierda
+                    if (snake.getDirection() != Direction.RIGHT && canChangeDirection) { //currentCol -1 sirve para comprobar si se puede mover hacia la izquierda
                         snake.changeDirection(Direction.LEFT);
                         canChangeDirection = false;
+                        
                     }
                     System.out.println("left");
                     break;
                 case KeyEvent.VK_RIGHT:
-                    if (snake.getDirection() != Direction.LEFT) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                    if (snake.getDirection() != Direction.LEFT && canChangeDirection) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
                         snake.changeDirection(Direction.RIGHT);
                         canChangeDirection = false;
+                        
                     }
                     System.out.println("Right");
                     break;
                 case KeyEvent.VK_UP:
-                    if (snake.getDirection() != Direction.DOWN) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                    if (snake.getDirection() != Direction.DOWN && canChangeDirection) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
                         snake.changeDirection(Direction.UP);
                         canChangeDirection = false;
+                        
                     }
                     System.out.println(delta_time);
                     System.out.println("Up");
                     break;
                 case KeyEvent.VK_DOWN:
-                    if (snake.getDirection() != Direction.UP) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
+                    if (snake.getDirection() != Direction.UP && canChangeDirection) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
                         snake.changeDirection(Direction.DOWN);
                         canChangeDirection = false;
+                       
                     }
                     System.out.println("Down");
                     break;
@@ -116,6 +120,7 @@ public class Board extends JPanel implements DrawSquareInterface, InitGame {
     private Incrementer incrementer;
     private GameOverInterface gameOverInterface;
     private boolean canChangeDirection = true;
+    
     
     private MenuInterface menuInterface;
     private Menu menu;
@@ -197,6 +202,7 @@ public class Board extends JPanel implements DrawSquareInterface, InitGame {
                 incrementer.incrementScore(2);
                 
             }
+            canChangeDirection = true;
         } else{
             timer.stop();
             if(gameOverInterface != null){
@@ -206,6 +212,7 @@ public class Board extends JPanel implements DrawSquareInterface, InitGame {
         }
         repaint();
         canChangeDirection = true;
+        
         
     }
     /*
