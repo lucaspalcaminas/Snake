@@ -176,4 +176,9 @@ public class Snake {
         return false;
         
     }
+    
+    public List<Node> getNodes(){
+        return nodes;
+    }
+
 }

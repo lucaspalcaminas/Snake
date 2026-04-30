@@ -9,5 +9,5 @@ package snake;
  * @author lucpaland
  */
 public enum SquareType {
-    HEAD, BODY, FOOD, SPECIALFOOD
+    HEAD, BODY, FOOD, SPECIALFOOD, WALL
 }
